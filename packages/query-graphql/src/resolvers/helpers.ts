@@ -7,9 +7,6 @@ import { SubscriptionArgsType, SubscriptionFilterInputType } from '../types'
 
 /** @internal */
 export const transformAndValidate = async <T>(TClass: Class<T>, partial: T): Promise<T> => {
-  if (partial instanceof TClass) {
-    return partial
-  }
   const transformed = plainToInstance(TClass, partial)
   const validationErrors = await validate(transformed as unknown as Record<keyof never, unknown>)
   if (validationErrors.length) {

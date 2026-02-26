@@ -9,7 +9,7 @@ import { MutationArgsType } from '../types'
 import { composeDecorators } from './decorator.utils'
 
 function transformValue<T>(value: T, type?: Class<T>): T {
-  if (type && !(value instanceof type)) {
+  if (type) {
     return plainToInstance<T, unknown>(type, value)
   }
   return value
